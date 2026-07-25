@@ -101,5 +101,5 @@ def post_to_blogger_via_email():
     except Exception as e:
         print(f"ত্রুটি দেখা দিয়েছে: {e}")
 
-if _name_ == "_main_":
+if __name__ == "_main_":
     post_to_blogger_via_email()
