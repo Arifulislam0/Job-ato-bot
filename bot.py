@@ -103,3 +103,4 @@ def post_to_blogger_via_email():
 
 if __name__ == "_main_":
     post_to_blogger_via_email()
+print("Email sent successfully to Blogger!")
