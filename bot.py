@@ -39,3 +39,13 @@ def post_to_blogger_via_email():
 
 if __name__ == "_main_":
     post_to_blogger_via_email()
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Run Python Bot
+      env:
+        # যদি আপনার অ্যাকাউন্টের কোনো পাসওয়ার্ড/সিক্রেট ব্যবহার করতে হয়
+        EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+      run: python main.py
