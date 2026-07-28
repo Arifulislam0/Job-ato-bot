@@ -36,16 +36,36 @@ def post_to_blogger_via_email():
         print("১০০% সফল! ইমেইল ব্লগার সিক্রেট ঠিকানায় পাঠানো হয়েছে।")
     except Exception as e:
         print(f"ত্রুটি দেখা দিয়েছে: {e}")
-
-if __name__ == "_main_":
-    post_to_blogger_via_email()
-    - name: Install Dependencies
-      run: |
-        python -m pip install --upgrade pip
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-
-    - name: Run Python Bot
+N
       env:
         # যদি আপনার অ্যাকাউন্টের কোনো পাসওয়ার্ড/সিক্রেট ব্যবহার করতে হয়
         EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
       run: python main.py
+name: Job Auto Poster
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *' # প্রয়োজন অনুযায়ী টাইমার দিতে পারেন
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run Python Script
+        env:
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+        run: python bot.py
