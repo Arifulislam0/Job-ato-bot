@@ -36,8 +36,7 @@ def post_to_blogger_via_email():
         print("১০০% সফল! ইমেইল ব্লগার সিক্রেট ঠিকানায় পাঠানো হয়েছে।")
     except Exception as e:
         print(f"ত্রুটি দেখা দিয়েছে: {e}")
-N
-      env:
+ env:
         # যদি আপনার অ্যাকাউন্টের কোনো পাসওয়ার্ড/সিক্রেট ব্যবহার করতে হয়
         EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
       run: python main.py
