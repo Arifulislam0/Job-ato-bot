@@ -1,4 +1,22 @@
 import os
+import requests
+
+def main():
+    print("Job Auto Poster script started successfully.")
+    
+    # এনভায়রনমেন্ট থেকে Blogger API বা প্রয়োজনীয় টোকেন রিড করা
+    blogger_api_key = os.environ.get("BLOGGER_API_KEY")
+    
+    if not blogger_api_key:
+        print("Error: Blogger API key or token is missing.")
+        return
+
+    # এখানে আপনার জব ফেচিং এবং Blogger-এ স্বয়ংক্রিয়ভাবে পোস্ট করার মূল লজিক থাকবে
+    print("Fetching latest job circulars and posting to the website...")
+
+if __name__ == "__main__":
+    main()
+import os
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
